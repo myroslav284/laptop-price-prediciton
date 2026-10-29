@@ -1,24 +1,23 @@
-# Laptop Price EDA & Data Preprocessing
+# Laptop Price Prediction: From Raw Text to Machine Learning
 
 ## Overview
-This project focuses on cleaning, preprocessing, and exploring a dataset of laptop specifications and prices. The primary goal is to transform raw, unstructured text data into a clean, machine-learning-ready format, followed by Exploratory Data Analysis (EDA) to uncover pricing trends.
+This project involves building a complete machine learning pipeline to predict laptop prices based on their specifications. It covers everything from parsing unstructured text features and performing statistical analysis (ANOVA) to hyperparameter tuning and model evaluation.
 
 ## Key Features & Engineering
-* **Feature Extraction:** Developed custom functions to parse raw text columns (`Cpu`, `Gpu`) and extract meaningful categorical and numerical features (e.g., Company, Type, Frequency).
-* **Data Type Optimization:** Cleaned string-based numerical columns (`Ram` removing 'GB', `Weight` removing 'kg') and converted them to appropriate `int` and `float` types.
-* **Complex Duplicate Handling:** Resolved hidden data duplication issues. Applied custom transformations (`applymap` with `tuple`) to handle unhashable list types generated during feature extraction, successfully identifying and dropping 28 duplicate records.
-* **Exploratory Data Analysis:** Built a correlation matrix and visualized hardware distributions to identify key drivers of laptop prices.
+* **Feature Extraction & Encoding:** Parsed raw text columns (`Cpu`, `Gpu`) into distinct categorical features. Applied One-Hot Encoding (`pd.get_dummies`) to transform categorical variables into a feature matrix.
+* **Data Type Optimization & Duplicates:** Converted string-based numerical fields to integers/floats and resolved hidden data duplication issues by applying transformations (`applymap` with `tuple`) to unhashable list types, dropping 28 duplicates.
+* **Statistical Feature Selection:** Conducted one-way ANOVA tests to validate the statistical significance of categorical features in relation to price.
+* **Machine Learning Pipeline:** Trained and evaluated multiple regression models including Linear Regression, Decision Tree, Random Forest, and XGBoost.
+* **Hyperparameter Tuning:** Utilized `GridSearchCV` to optimize the XGBoost regressor, achieving a final R² score of 0.84.
 
 ## Tech Stack
 * **Language:** Python
-* **Libraries:** Pandas, Matplotlib, Seaborn
+* **Libraries:** Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, XGBoost, SciPy
 
 ## Dataset
-The dataset used in this project contains 1,303 initial records with 15 features including RAM, CPU, GPU, Weight, Screen Resolution, and Price.
-* **Source:** [Kaggle - Laptop Prices Dataset]([https://www.kaggle.com/datasets/ionaskel/laptop-prices](https://www.kaggle.com/datasets/muhammetvarl/laptop-price))
+The dataset used in this project is the widely known "Laptop Price Prediction" dataset from Kaggle.
+* **Source:** [Kaggle - Laptop Prices](https://www.kaggle.com/datasets/muhammetvarl/laptop-price)
 
-## How to Run
-1. Clone the repository: `git clone https://github.com/your-username/laptop-price-eda.git`
-2. Install dependencies: `pip install pandas matplotlib seaborn`
-3. Download the `laptop_price.csv` file from the Kaggle link above and place it in the root directory of the project.
-4. Run the Jupyter Notebook `laptop_price.ipynb` to explore the step-by-step preprocessing and analysis.
+## How to Explore
+1. Clone the repository: `git clone https://github.com/myroslav284/laptop-price-prediciton.git`
+2. Open the Jupyter Notebook `laptop_price.ipynb` directly on GitHub to view the executed code, data transformations, and model evaluations.
